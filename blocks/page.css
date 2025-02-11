@@ -1,0 +1,20 @@
+.page {
+  background-color: #fcf5e5;
+  font-family: Poppins, Arial, Helvetica, sans-serif;
+  padding-bottom: 40px;
+  border-bottom: 1px;
+  gap: 20px;
+}
+
+.page__section {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  /* max-height: 970px; */
+}
+
+.page__content {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
