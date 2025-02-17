@@ -7,14 +7,5 @@
 .header__logo {
   width: 94px;
   height: 26px;
-  padding: 10px 80px;
   justify-content: space-between;
-}
-
-@media screen and (max-width: 288px) {
-  .header {
-    width: 288px;
-    height: 318px;
-    gap: 12px;
-  }
 }
