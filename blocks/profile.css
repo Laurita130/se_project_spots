@@ -15,7 +15,6 @@
 .profile__column {
   display: flex;
   flex-direction: column;
-  margin-right: 20px;
 }
 
 .profile__name {
@@ -30,11 +29,7 @@
   max-width: 420px;
   color: #212121;
   font-size: 32px;
-  line-height: 32px;
-}
-
-.editprofile {
-  padding-right: 5px;
+  line-height: 1;
 }
 
 .profile__description {
@@ -93,7 +88,7 @@
 }
 
 .profile__add-btn:hover {
-  opacity: 1;
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 627px) {
