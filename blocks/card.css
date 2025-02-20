@@ -23,7 +23,6 @@
   max-width: 350px;
   margin: 0;
   color: #212121;
-  max-width: 250px;
 }
 
 .card__like-btn {
@@ -53,6 +52,7 @@
   .card__title {
     font-size: 16px;
     line-height: 16px;
+    max-width: 250px;
   }
   .card__like-btn {
     height: 18px;
