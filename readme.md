@@ -7,9 +7,9 @@ media queries to adjust the layout on different screen sizes.The profile and car
 
 
 [Click here for video](https://drive.google.com/file/d/1N0ZKdnOd4yc0CU8-7e-lKLWnpz8fvpTf/view?usp=sharing)
+[This sitr is deployed to github pages](https://laurita130.github.io/se_project_spots/)
 
 By Laura Alburez
-
 
 
 ##
