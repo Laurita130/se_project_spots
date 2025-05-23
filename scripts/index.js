@@ -53,10 +53,6 @@ function openModal() {
   setTimeout(() => modal.classList.add("show"), 10);
 }
 
-function closeModal() {
-  modal.classList.remove("show");
-  setTimeout(() => modal.classList.add("hidden"), 10);
-}
 addCardFormElement.addEventListener("submit", handleAddCardSubmit);
 
 editProfileForm.addEventListener("submit", handleEditProfileSubmit);
