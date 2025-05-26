@@ -30,7 +30,7 @@
             <button type="button" class="profile__edit-btn">
               <img
                 src="./images/Group2.svg"
-                class="profile__edit-btn"
+                class="click icon"
                 alt="pencil Icon"
               />Edit Profile
             </button>
@@ -38,7 +38,7 @@
           <button type="button" class="profile__add-btn">
             <img
               src="./images/Group26.svg"
-              class="profile__add-icon"
+              class="add-icon"
               alt="Plus Icon"
             />New Post
           </button>
@@ -122,7 +122,9 @@
 
       <div class="modal" id="edit-profile-modal">
         <div class="modal__container">
-          <button type="button" class="modal__close-btn">X</button>
+          <button type="button" class="modal__close-btn">
+            <img src="./images/Group27.jpg" class="exit-icon" alt="exit sign" />
+          </button>
           <h2 class="modal__title">Edit Profile</h2>
           <form class="modal__form">
             <label for="profile-name-input" class="modal__label">
@@ -141,6 +143,7 @@
                 type="text"
                 class="modal__input"
                 placeholder="Describe Yourself"
+                required
               />
             </label>
             <button type="submit" class="modal__submit-btn">Save</button>
@@ -149,7 +152,9 @@
       </div>
       <div class="modal" id="new-post-modal">
         <div class="modal__container">
-          <button type="button" class="modal__close-btn">X</button>
+          <button type="button" class="modal__close-btn">
+            <img src="./images/Group27.jpg" class="exit-icon" alt="exit icon" />
+          </button>
           <h2 class="modal__title">New Post</h2>
           <form class="modal__form">
             <label for="card-image-input" class="modal__label">
@@ -161,10 +166,10 @@
                 placeholder="Place a link to the picture"
               />
             </label>
-            <label for="profile-description-input" class="modal__label">
+            <label for="card-caption-input" class="modal__label">
               Description
               <input
-                id="profile-description-input"
+                id="card-caption-input"
                 type="text"
                 class="modal__input"
                 placeholder="Describe Yourself"

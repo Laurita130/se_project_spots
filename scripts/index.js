@@ -43,8 +43,8 @@ function handleEditProfileSubmit(evt) {
   profileDescriptionEl.value = editProfileDescriptionInput.textContent.value;
   editProfileModal.classList.remove("modal_is-opened");
 }
+
 function handleAddCardSubmit(evt) {
-  // Prevent default browser behavior.
   evt.preventDefault();
 }
 
