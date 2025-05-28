@@ -39,18 +39,13 @@ newPostCloseBtn.addEventListener("click", function () {
 
 function handleEditProfileSubmit(evt) {
   evt.preventDefault();
-  profileNameEl.value = editProfileNameInput.textContent.value;
-  profileDescriptionEl.value = editProfileDescriptionInput.textContent.value;
+  profileNameEl.textContent = editProfileNameInput.value;
+  profileDescriptionEl.textContent = editProfileDescriptionInput.value;
   editProfileModal.classList.remove("modal_is-opened");
 }
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
-}
-
-function openModal() {
-  modal.classList.remove("hidden");
-  setTimeout(() => modal.classList.add("show"), 10);
 }
 
 addCardFormElement.addEventListener("submit", handleAddCardSubmit);
