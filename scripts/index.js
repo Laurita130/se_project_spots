@@ -8,13 +8,17 @@ const editProfileNameInput = editProfileModal.querySelector(
 const editProfileDescriptionInput = editProfileModal.querySelector(
   "#profile-description-input"
 );
-const addCardFormElement = document.querySelector(".modal__form");
+
 const nameInput = document.querySelector("#profile-name-input");
-const linkInput = document.querySelector(".card-image-input");
+
+const newPostModal = document.querySelector("#new-post-modal");
+const linkInput = newPostModal.querySelector("#card-image-input");
+const captionInput = newPostModal.querySelector("#card-caption-input");
 
 const newPostBtn = document.querySelector(".profile__add-btn");
-const newPostModal = document.querySelector("#new-post-modal");
+
 const newPostCloseBtn = newPostModal.querySelector(".modal__close-btn");
+const addCardFormElement = newPostModal.querySelector(".modal__form");
 
 const profileNameEl = document.querySelector(".profile__name");
 const profileDescriptionEl = document.querySelector(".profile__description");
@@ -46,6 +50,8 @@ function handleEditProfileSubmit(evt) {
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
+  console.log("linkInput", linkInput.value);
+  console.log("captionInput", captionInput.value);
 }
 
 addCardFormElement.addEventListener("submit", handleAddCardSubmit);
