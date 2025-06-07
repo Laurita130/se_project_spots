@@ -50,12 +50,7 @@ function handleAddCardSubmit(evt) {
   evt.preventDefault();
   console.log("linkInput", linkInput.value);
   console.log("captionInput", captionInput.value);
-}
-
-function closeModal() {
-  console.log("Modal Closed");
-  document.linkInput("myModal").style.display = "none";
-  document.captionInput("myModal").style.display = "none";
+  newPostModal.classList.remove("modal_is-opened");
 }
 
 addCardFormElement.addEventListener("submit", handleAddCardSubmit);
