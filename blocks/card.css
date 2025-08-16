@@ -1,3 +1,10 @@
+.card {
+  position: relative;
+  font-family: Poppins, Arial, Helvetica, sans-serif;
+  flex-direction: column;
+  display: flex;
+}
+
 .card__image {
   height: 413px;
   width: 413px;
@@ -20,9 +27,30 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  max-width: 350px;
+  max-width: 353px;
   margin: 0;
   color: #212121;
+}
+
+.card__delete-button {
+  width: 32px;
+  height: 32px;
+  margin-left: 371px;
+  margin-top: 10px;
+  position: absolute;
+  background-image: url(../images/State=Default.svg);
+  border: none;
+  background-color: transparent;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.card__delete-button:hover {
+  opacity: 1;
+  background-image: url(../images/State=Hover.svg);
 }
 
 .card__like-btn {
@@ -41,6 +69,22 @@
 
 .card__like-btn:hover {
   opacity: 1;
+}
+
+.card__like-btn_active {
+  background-image: url(../images/Union.svg);
+  opacity: 1;
+}
+
+.card__like-btn_active:hover {
+  opacity: 0.4;
+}
+
+.card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
 }
 
 @media screen and (max-width: 627px) {
