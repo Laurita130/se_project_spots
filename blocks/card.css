@@ -3,6 +3,7 @@
   font-family: Poppins, Arial, Helvetica, sans-serif;
   flex-direction: column;
   display: flex;
+  cursor: pointer;
 }
 
 .card__image {
@@ -35,8 +36,8 @@
 .card__delete-button {
   width: 32px;
   height: 32px;
-  margin-left: 371px;
-  margin-top: 10px;
+  top: 10px;
+  left: 371px;
   position: absolute;
   background-image: url(../images/State=Default.svg);
   border: none;

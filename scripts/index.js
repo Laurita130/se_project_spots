@@ -130,6 +130,9 @@ function handleEditProfileSubmit(evt) {
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
+  if (!captionInput.value || !linkInput.value) {
+    return;
+  }
 
   const inputValues = {
     name: captionInput.value,
@@ -140,6 +143,7 @@ function handleAddCardSubmit(evt) {
   cardsList.prepend(cardElement);
 
   closeModal(newPostModal);
+  evt.target.reset();
 }
 
 addCardFormElement.addEventListener("submit", handleAddCardSubmit);
