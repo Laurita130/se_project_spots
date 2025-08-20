@@ -106,4 +106,8 @@
   .card__content {
     width: 100%;
   }
+
+  .card__delete-button {
+    left: 246px;
+  }
 }
