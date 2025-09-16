@@ -11,6 +11,7 @@ const showInputError = (formEl, inputEL, errorMsg, config) => {
   const errorMsgEl = formEl.querySelector(`#${inputEL.id}-error`);
   errorMsgEl.textContent = errorMsg;
   inputEL.classList.add(config.inputErrorClass);
+  errorMsgEl.classList.add(config.errorClass);
 };
 
 const hideInputError = (formEl, inputEL, config) => {
@@ -37,15 +38,13 @@ const toggleButtonState = (inputList, buttonEl, config) => {
   if (hasInvalidInput(inputList, config)) {
     disableButton(buttonEl, config);
   } else {
-    buttonEl.classList.remove(
-      config.submitButtonSelector.slice(1) + "_disabled"
-    );
+    buttonEl.classList.remove = config.inactiveButtonClass;
     buttonEl.disabled = false;
   }
 };
 
 const disableButton = (buttonEl, config) => {
-  buttonEl.classList.add(config.submitButtonSelector.slice(1) + "_disabled");
+  buttonEl.classList.add(config.inactiveButtonClass);
   buttonEl.disabled = true;
 };
 
