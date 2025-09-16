@@ -38,7 +38,7 @@ const toggleButtonState = (inputList, buttonEl, config) => {
   if (hasInvalidInput(inputList, config)) {
     disableButton(buttonEl, config);
   } else {
-    buttonEl.classList.remove = config.inactiveButtonClass;
+    buttonEl.classList.remove(config.inactiveButtonClass);
     buttonEl.disabled = false;
   }
 };
@@ -61,6 +61,15 @@ const setEventListeners = (formEl, config) => {
     });
   });
 };
+function resetValidation(formEl, config) {
+  const inputList = Array.from(formEl.querySelectorAll(config.inputSelector));
+  inputList.forEach((inputEl) => {
+    hideInputError(formEl, inputEl, config); // clear error messages
+  });
+
+  const buttonEl = formEl.querySelector(config.submitButtonSelector);
+  toggleButtonState(inputList, buttonEl, config); // reset button state
+}
 
 const enableValidation = (config) => {
   const formList = document.querySelectorAll(config.formSelector);

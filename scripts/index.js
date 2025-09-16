@@ -121,6 +121,14 @@ editProfileCloseBtn.addEventListener("click", function () {
   closeModal(editProfileModal, settings);
 });
 
+editProfileBtn.addEventListener("click", function () {
+  editProfileNameInput.value = profileNameEl.textContent;
+  editProfileDescriptionInput.value = profileDescriptionEl.textContent;
+
+  resetValidation(editProfileForm, settings); // use this function to clear the error messages
+  openModal(editProfileModal);
+});
+
 newPostBtn.addEventListener("click", function () {
   openModal(newPostModal, settings);
 });
