@@ -96,56 +96,69 @@ function getCardElement(data) {
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
   document.addEventListener("keydown", handleEscClose);
+
+  //  add listener for overlay clicks
+  modal.addEventListener("mousedown", handleOverlayClick);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
   document.removeEventListener("keydown", handleEscClose);
+
+  // remove listener when closing
+  modal.removeEventListener("mousedown", handleOverlayClick);
 }
 
 function handleEscClose(evt) {
   if (evt.key === "Escape") {
     const openedModal = document.querySelector(".modal_is-opened");
-    closeModal(openedModal);
+    if (openedModal) {
+      closeModal(openedModal);
+    }
   }
 }
 
+function handleOverlayClick(evt) {
+  if (evt.target.classList.contains("modal_is-opened")) {
+    closeModal(evt.target);
+  }
+}
 editProfileBtn.addEventListener("click", function () {
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
 
-  openModal(editProfileModal, settings);
+  openModal(editProfileModal);
 });
 
 editProfileCloseBtn.addEventListener("click", function () {
-  closeModal(editProfileModal, settings);
+  closeModal(editProfileModal);
 });
 
 editProfileBtn.addEventListener("click", function () {
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
 
-  resetValidation(editProfileForm, settings); // use this function to clear the error messages
+  resetValidation();
   openModal(editProfileModal);
 });
 
 newPostBtn.addEventListener("click", function () {
-  openModal(newPostModal, settings);
+  openModal(newPostModal);
 });
 
 newPostCloseBtn.addEventListener("click", function () {
-  closeModal(newPostModal, settings);
+  closeModal(newPostModal);
 });
 
 previewModalCloseBtn.addEventListener("click", function () {
-  closeModal(previewModal, settings);
+  closeModal(previewModal);
 });
 
 function handleEditProfileSubmit(evt) {
   evt.preventDefault();
   profileNameEl.textContent = editProfileNameInput.value;
   profileDescriptionEl.textContent = editProfileDescriptionInput.value;
-  closeModal(editProfileModal, settings);
+  closeModal(editProfileModal);
 }
 
 function handleAddCardSubmit(evt) {
@@ -159,12 +172,10 @@ function handleAddCardSubmit(evt) {
     link: linkInput.value,
   };
 
-  disableButton(previewCardSubmitBtn, settings);
-
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
 
-  closeModal(newPostModal, settings);
+  closeModal(newPostModal);
   addCardFormElement.reset();
 }
 

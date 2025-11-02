@@ -1,4 +1,4 @@
-const settings = {
+const validationConfig = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__submit-btn",
@@ -71,11 +71,9 @@ function resetValidation(formEl, config) {
   toggleButtonState(inputList, buttonEl, config); // reset button state
 }
 
-const enableValidation = (config) => {
+export const enableValidation = (config) => {
   const formList = document.querySelectorAll(config.formSelector);
   formList.forEach((formEl) => {
     setEventListeners(formEl, config);
   });
 };
-
-enableValidation(settings);
