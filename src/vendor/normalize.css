@@ -117,8 +117,6 @@ small {
   font-size: 80%;
 }
 
-
-
 sub,
 sup {
   font-size: 75%;
@@ -135,14 +133,10 @@ sup {
   top: -0.5em;
 }
 
-
 img {
   border-style: none;
- border: 2px;
-
+  border: 2px;
 }
-
-
 
 button,
 input,
@@ -173,11 +167,9 @@ input {
 
 button,
 select {
- text-transform: none;
- background: transparent;
- border: none;
-
-
+  text-transform: none;
+  background: transparent;
+  border: none;
 }
 
 /**
@@ -187,7 +179,7 @@ select {
 button,
 [type="button"],
 [type="reset"],
-[type="submit"], {
+[type="submit"] {
   -webkit-appearance: button;
 }
 
@@ -210,8 +202,8 @@ button::-moz-focus-inner,
 button:-moz-focusring,
 [type="button"]:-moz-focusring,
 [type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring,
- outline: 1px, dotted, Buttontext;
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted Buttontext;
 }
 
 /**
