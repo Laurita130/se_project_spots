@@ -1,4 +1,4 @@
-export const validationConfig = {
+const validationConfig = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__submit-btn",
