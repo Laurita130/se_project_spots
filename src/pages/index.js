@@ -241,6 +241,7 @@ function handleEditProfileSubmit(evt) {
   evt.preventDefault();
   const submitBtn = evt.submitter;
   setButtonText(submitBtn, true, "Save", "Saving...");
+
   api
     .editUserInfo({
       name: editProfileNameInput.value,
