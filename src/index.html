@@ -168,10 +168,11 @@
       <div class="modal__container">
         <button type="button" class="modal__close-btn"></button>
         <h3 class="modal__title">Edit Avatar</h3>
-        <form class="modal__avatar-form" id="edit-avatar-form">
+        <form class="modal__form" id="avatar-form">
           <label for="modal__avatar-input" class="modal__label">
             Avatar
             <input
+              type="url"
               id="modal__avatar-input"
               class="modal__input"
               name="avatar"
@@ -199,7 +200,9 @@
           >
             Delete
           </button>
-          <button type="button" class="modal__submit-btn">Cancel</button>
+          <button type="button" class="modal__submit-btn modal__cancel-btn">
+            Cancel
+          </button>
         </form>
       </div>
     </div>
