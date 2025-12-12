@@ -195,13 +195,6 @@ editProfileCloseBtn.addEventListener("click", function () {
   closeModal(editProfileModal);
 });
 
-editProfileBtn.addEventListener("click", function () {
-  editProfileNameInput.value = profileNameEl.textContent;
-  editProfileDescriptionInput.value = profileDescriptionEl.textContent;
-
-  openModal(editProfileModal);
-});
-
 avatarModalBtn.addEventListener("click", function () {
   openModal(avatarModal);
 });
@@ -228,15 +221,13 @@ avatarModalBtn.addEventListener("click", function () {
 
 avatarForm.addEventListener("submit", handleAvatarSubmit);
 function handleAvatarSubmit(evt) {
+  console.log("submit");
   evt.preventDefault();
-
   const submitBtn = evt.submitter;
   setButtonText(submitBtn, true, "Save", "Saving...");
-
-  const formData = getInputValues(avatarInputEls);
-  console.log("formData", formData);
+  console.log("formData", getInputValues(avatarInputEls));
   api
-    .editAvatarInfo(formData.avatar)
+    .editAvatarInfo(getInputValues(avatarInputEls).avatar)
     .then((data) => {
       console.log(data);
       profileAvatarEl.src = data.avatar;
@@ -247,6 +238,7 @@ function handleAvatarSubmit(evt) {
     .catch(console.error)
     .finally(() => {
       setButtonText(submitBtn, false, "Save", "Saving...");
+      submitBtn.disabled = false;
     });
 }
 
@@ -305,7 +297,6 @@ deleteModalCloseBtn.addEventListener("click", function () {
   closeModal(deleteModal);
 });
 
-addCardFormElement.addEventListener("submit", handleAddCardSubmit);
 addCardFormElement.addEventListener("submit", handleAddCardSubmit);
 
 editProfileForm.addEventListener("submit", handleEditProfileSubmit);
