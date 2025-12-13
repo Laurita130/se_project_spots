@@ -1,6 +1,10 @@
 import "./index.css";
 import Api from "../utils/Api.js";
-import { enableValidation, validationConfig } from "../scripts/validation.js";
+import {
+  enableValidation,
+  validationConfig,
+  disableButton,
+} from "../scripts/validation.js";
 //import { profileAvatarEl } from "../scripts/constants.js";
 import { setButtonText, getInputValues } from "../utils/helpers.js";
 
@@ -233,12 +237,12 @@ function handleAvatarSubmit(evt) {
       profileAvatarEl.src = data.avatar;
       closeModal(avatarModal);
       avatarForm.reset();
-      submitBtn.disabled = true;
+      disableButton(submitBtn, validationConfig);
     })
     .catch(console.error)
     .finally(() => {
       setButtonText(submitBtn, false, "Save", "Saving...");
-      submitBtn.disabled = false;
+      disableButton(submitBtn, validationConfig);
     });
 }
 
