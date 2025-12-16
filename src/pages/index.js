@@ -1,6 +1,11 @@
 import "./index.css";
 import Api from "../utils/Api.js";
-import { enableValidation, validationConfig } from "../scripts/validation.js";
+import {
+  enableValidation,
+  validationConfig,
+  disableButton,
+  resetValidation,
+} from "../scripts/validation.js";
 //import { profileAvatarEl } from "../scripts/constants.js";
 import { setButtonText, getInputValues } from "../utils/helpers.js";
 
@@ -16,6 +21,9 @@ api
   .getAppInfo()
   .then(([userData, cards]) => {
     console.log(userData, cards);
+    profileNameEl.textContent = userData.name;
+    profileDescriptionEl.textContent = userData.about;
+    profileAvatarEl.src = userData.avatar;
     cards.forEach((item) => {
       const cardEl = getCardElement(item);
       cardsList.append(cardEl);
@@ -58,6 +66,16 @@ const avatarInputEls = [...avatarModal.querySelectorAll(".modal__input")];
 const profileAvatarEl = document.querySelector(".profile__avatar");
 
 const deleteModal = document.querySelector("#delete-modal");
+const deleteModalCloseBtn = deleteModal.querySelector(".modal__close-btn");
+const deleteModalCancelBtn = deleteModal.querySelector(".modal__cancel-btn");
+
+deleteModalCloseBtn.addEventListener("click", function () {
+  closeModal(deleteModal);
+});
+
+deleteModalCancelBtn.addEventListener("click", function () {
+  closeModal(deleteModal);
+});
 
 const addCardFormElement = newPostModal.querySelector(".modal__form");
 const cardTemplate = document
@@ -174,19 +192,12 @@ function handleDeleteSubmit(evt) {
 editProfileBtn.addEventListener("click", function () {
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
-
+  resetValidation(editProfileForm, validationConfig);
   openModal(editProfileModal);
 });
 
 editProfileCloseBtn.addEventListener("click", function () {
   closeModal(editProfileModal);
-});
-
-editProfileBtn.addEventListener("click", function () {
-  editProfileNameInput.value = profileNameEl.textContent;
-  editProfileDescriptionInput.value = profileDescriptionEl.textContent;
-
-  openModal(editProfileModal);
 });
 
 avatarModalBtn.addEventListener("click", function () {
@@ -215,32 +226,31 @@ avatarModalBtn.addEventListener("click", function () {
 
 avatarForm.addEventListener("submit", handleAvatarSubmit);
 function handleAvatarSubmit(evt) {
+  console.log("submit");
   evt.preventDefault();
-
   const submitBtn = evt.submitter;
   setButtonText(submitBtn, true, "Save", "Saving...");
-
-  const formData = getInputValues(avatarInputEls);
-  console.log("formData", formData);
+  console.log("formData", getInputValues(avatarInputEls));
   api
-    .editAvatarInfo(formData.avatar)
-
+    .editAvatarInfo(getInputValues(avatarInputEls).avatar)
     .then((data) => {
       console.log(data);
       profileAvatarEl.src = data.avatar;
+      closeModal(avatarModal);
+      avatarForm.reset();
+      disableButton(submitBtn, validationConfig);
     })
     .catch(console.error)
     .finally(() => {
       setButtonText(submitBtn, false, "Save", "Saving...");
     });
-
-  closeModal(avatarModal);
 }
 
 function handleEditProfileSubmit(evt) {
   evt.preventDefault();
   const submitBtn = evt.submitter;
   setButtonText(submitBtn, true, "Save", "Saving...");
+
   api
     .editUserInfo({
       name: editProfileNameInput.value,
@@ -276,17 +286,20 @@ function handleAddCardSubmit(evt) {
       console.log(data);
       const cardElement = getCardElement(data);
       cardsList.prepend(cardElement);
-
       closeModal(newPostModal);
       addCardFormElement.reset();
+      disableButton(submitBtn, validationConfig);
     })
     .catch(console.error)
     .finally(() => {
       setButtonText(submitBtn, false, "Save", "Saving...");
     });
 }
-
 deleteModal.addEventListener("submit", handleDeleteSubmit);
+
+deleteModalCloseBtn.addEventListener("click", function () {
+  closeModal(deleteModal);
+});
 
 addCardFormElement.addEventListener("submit", handleAddCardSubmit);
 
