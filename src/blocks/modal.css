@@ -192,8 +192,8 @@
     width: 100%;
   }
   .modal__close-btn {
-    top: 12px;
-    right: 12px;
+    top: -48px;
+    right: 0;
   }
   .modal__title {
     font-size: 20px;
@@ -203,6 +203,31 @@
   }
   .modal__container {
     padding: 12px;
+  }
+
+  .modal__delete-btn {
+    background-color: rgba(255, 101, 101, 1);
+    display: block;
+    margin: 8px 0 0;
+    width: 300px;
+    padding: 18px 32px;
+    border-radius: 8px;
+    line-height: 1;
+    font-size: 20px;
+    box-sizing: border-box;
+    gap: 12px;
+  }
+  .modal__cancel-btn {
+    background-color: rgba(255, 255, 255, 1);
+    color: #212121;
+    display: block;
+    margin: 8px 0 0;
+    width: 300px;
+    padding: 18px 32px;
+    border-radius: 8px;
+    line-height: 1;
+    font-size: 20px;
+    box-sizing: border-box;
   }
 }
 

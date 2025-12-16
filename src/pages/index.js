@@ -4,6 +4,7 @@ import {
   enableValidation,
   validationConfig,
   disableButton,
+  resetValidation,
 } from "../scripts/validation.js";
 //import { profileAvatarEl } from "../scripts/constants.js";
 import { setButtonText, getInputValues } from "../utils/helpers.js";
@@ -191,7 +192,7 @@ function handleDeleteSubmit(evt) {
 editProfileBtn.addEventListener("click", function () {
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
-
+  resetValidation(editProfileForm, validationConfig);
   openModal(editProfileModal);
 });
 
@@ -242,7 +243,6 @@ function handleAvatarSubmit(evt) {
     .catch(console.error)
     .finally(() => {
       setButtonText(submitBtn, false, "Save", "Saving...");
-      disableButton(submitBtn, validationConfig);
     });
 }
 
@@ -286,9 +286,9 @@ function handleAddCardSubmit(evt) {
       console.log(data);
       const cardElement = getCardElement(data);
       cardsList.prepend(cardElement);
-
       closeModal(newPostModal);
       addCardFormElement.reset();
+      disableButton(submitBtn, validationConfig);
     })
     .catch(console.error)
     .finally(() => {
